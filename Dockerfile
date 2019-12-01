@@ -31,11 +31,12 @@ RUN mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 RUN git config --global user.email "tesao@my-symfony.com"
 RUN git config --global user.name "Tesao"
 
-# add httpd.conf
-ADD ./httpd.conf /etc/httpd/httpd.conf
+# open port
+EXPOSE 8000
 
 # make project folder
 RUN symfony new my_proj
 
-# start in project directory
-CMD ["cd my_proj"]
+# get apache pack
+RUN cd my_proj
+RUN composer require twig/twig
