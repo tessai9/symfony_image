@@ -1,6 +1,9 @@
 # based on centos 8
 FROM centos:8
 
+# maintainer
+MAINTAINER Tesao
+
 # install packages
 RUN yum -y upgrade
 RUN yum -y install wget zip unzip nginx
@@ -33,3 +36,6 @@ ADD ./httpd.conf /etc/httpd/httpd.conf
 
 # make project folder
 RUN symfony new my_proj
+
+# start in project directory
+CMD ["cd my_proj"]
