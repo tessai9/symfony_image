@@ -6,14 +6,14 @@ MAINTAINER Tesao
 
 # install packages
 RUN yum -y upgrade
-RUN yum -y install wget zip unzip nginx
+RUN yum -y install wget zip unzip nginx emacs
 RUN yum -y install php php-common php-json php-xml php-pdo git
 
 # add user
 RUN useradd _www
 
 # move to home directory
-WORKDIR /root
+WORKDIR /srv
 
 # install composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
