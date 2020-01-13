@@ -26,16 +26,16 @@ RUN wget https://get.symfony.com/cli/installer -O - | bash
 RUN export PATH="$HOME/.symfony/bin:$PATH"
 RUN mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 
-# git initialization
-RUN git config --global user.email "tesao@my-symfony.com"
-RUN git config --global user.name "Tesao"
-
 # open port
 EXPOSE 8000
 
+# git initialization for example
+RUN git config --global user.email "tesao@tesao.work"
+RUN git config --global user.name "Tesao"
+
 # make project folder
-RUN symfony new my_proj
+RUN symfony new proj --version=4.4
 
 # get apache pack
-RUN cd my_proj
+RUN cd proj
 RUN composer require twig/twig
